@@ -17,6 +17,11 @@ from utils.vocab import load_vocab_dict
 from utils.evaluator import BLEUEvaluator
 from utils.mid_data import process_mid_ids
 
+
+tf.compat.v1.disable_eager_execution()
+from tensorflow.compat.v1.nn import rnn_cell
+cell_class = rnn_cell.LSTMCell
+
 os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
