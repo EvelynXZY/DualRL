@@ -9,6 +9,7 @@ from utils.vocab import build_vocab_from_file, load_vocab
 from model import NMT
 from utils import constants
 from options import *
+from options import load_nmt_arguments
 
 tf.compat.v1.disable_eager_execution()
 # from tensorflow.compat.v1.nn import rnn_cell

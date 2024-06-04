@@ -2,9 +2,18 @@ import argparse
 import os
 from yaml import load, dump
 
-base_path = os.getcwd()  # current working directory
-base_path_ = base_path.split('/')
-base_path = '/'.join(base_path_[:base_path_.index('DualRL') + 1])
+# base_path = os.getcwd()  # current working directory
+# base_path_ = base_path.split('/')
+# base_path = '/'.join(base_path_[:base_path_.index('DualRL') + 1])
+# Find the base path of the DualRL directory
+base_path = os.path.abspath(os.path.dirname(__file__))
+while not os.path.basename(base_path) == 'DualRL':
+    new_base_path = os.path.dirname(base_path)
+    if new_base_path == base_path:  # reached root directory
+        raise ValueError("'DualRL' directory not found in the path")
+    base_path = new_base_path
+
+base_path = os.path.join(base_path, 'DualRL')
 
 if os.environ.get('DATASET') is not None:
     dataset = os.environ.get('DATASET')
