@@ -11,8 +11,8 @@ from utils import constants
 from utils.vocab import build_vocab_from_file, load_vocab_dict
 
 tf.compat.v1.disable_eager_execution()
-from tensorflow.compat.v1.nn import rnn_cell
-cell_class = rnn_cell.LSTMCell
+# from tensorflow.compat.v1.nn import rnn_cell
+# cell_class = rnn_cell.LSTMCell
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "2,1,0,3"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'

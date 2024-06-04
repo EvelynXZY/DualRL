@@ -6,8 +6,8 @@ from utils import constants
 from opennmt import tokenizers
 from opennmt import utils
 import tensorflow as tf
-from tensorflow.compat.v1.nn import rnn_cell
-cell_class = rnn_cell.LSTMCell
+# from tensorflow.compat.v1.nn import rnn_cell
+# cell_class = rnn_cell.LSTMCell
 
 def build_vocab_from_file(src_file, save_path, min_frequency=5, size=0, without_sequence_tokens=False):
     """
