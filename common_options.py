@@ -6,14 +6,23 @@ from yaml import load, dump
 # base_path_ = base_path.split('/')
 # base_path = '/'.join(base_path_[:base_path_.index('DualRL') + 1])
 # Find the base path of the DualRL directory
-base_path = os.path.abspath(os.path.dirname(__file__))
-while not os.path.basename(base_path) == 'DualRL':
-    new_base_path = os.path.dirname(base_path)
-    if new_base_path == base_path:  # reached root directory
-        raise ValueError("'DualRL' directory not found in the path")
-    base_path = new_base_path
 
-base_path = os.path.join(base_path, 'DualRL')
+# Get the current file's directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Traverse up the directory tree to find 'DualRL'
+while True:
+    if os.path.basename(current_dir) == 'DualRL':
+        base_path = current_dir
+        break
+    elif os.path.dirname(current_dir) == current_dir:
+        # If we have reached the root directory and not found 'DualRL'
+        raise ValueError("'DualRL' directory not found in the path")
+    else:
+        current_dir = os.path.dirname(current_dir)
+
+print("Base path found:", base_path)
+
 
 if os.environ.get('DATASET') is not None:
     dataset = os.environ.get('DATASET')
